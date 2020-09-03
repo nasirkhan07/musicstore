@@ -6,15 +6,19 @@ import { EditOutlined, EllipsisOutlined,DeleteOutlined  } from '@ant-design/icon
 const {Title} = Typography;
 
 
+
+
 const Album = () => {
   const history = useHistory();
   const [allData, setAllData] = useState([]);
+  const [albumId, setAlbumId] = useState(0);
+
 
   useEffect(() => {
     axios.get(`http://localhost:3000/albums`).then(res => {
       setAllData(res.data);
     });
-  });
+  },[albumId]);
 
   const columns = [
     {
@@ -35,18 +39,26 @@ const Album = () => {
     },
   ];
 
-  const data = [{
+  let  data = [{
   }];
 
-  allData.map((album: any) => {
-    data.push({
-     key: album.id,
-     name: album.name,
-     artist: album.artist,
-     type: album.type,
-     stock: album.stock,
-   })
-  // return data;
+  data=allData.map((album: any) => {
+    
+    return {
+      key: album.id,
+      name: album.name,
+      artist: album.artist,
+      type: album.type,
+      stock: album.stock
+    }
+  //   data.push({
+  //    key: album.id,
+  //    name: album.name,
+  //    artist: album.artist,
+  //    type: album.type,
+  //    stock: album.stock,
+  //  })
+  //  return data;
  });
 
   const handleClick = () => {
