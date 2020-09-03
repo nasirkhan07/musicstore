@@ -107,7 +107,7 @@ const FormApp = () => {
             <Button type="primary" loading={loading} htmlType="submit">
               Save
             </Button>{' '}
-            <Button type="default" htmlType="button" onClick={() => history.push('/albums')}>
+            <Button type="default" htmlType="button" onClick={() => history.push('/album')}>
               Back
             </Button>
               </div>
